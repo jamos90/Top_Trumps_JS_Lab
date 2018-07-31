@@ -34,7 +34,7 @@ Game.prototype.playGame = function (player1, p1Choice, player2){
   this.selectCard(player1);
   this.selectCard(player2);
 
-  if (this.getAttributeValue(p1Choice, 0) > this.getAttributeValue(p1Choice, 1)) {console.log("Player one wins");
+  if (this.getAttributeValue(p1Choice, 0) > this.getAttributeValue(p1Choice, 1)) {console.log("Player one wins this round");
   player1.cards.push(this.activeHands.pop());
   player1.cards.push(this.activeHands.pop());
 }  else if (this.getAttributeValue(p1Choice, 0) < this.getAttributeValue(p1Choice, 1))
@@ -49,6 +49,11 @@ Game.prototype.playGame = function (player1, p1Choice, player2){
     }
 
   }
+
+  // Game.prototype.playerWins = function(){
+  //
+  //   if
+  // }
 
 
 module.exports = Game;
