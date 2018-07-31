@@ -5,14 +5,16 @@ const Game = function (players, deck){
   this.activeHands = [];
 }
 
-Game.prototype.deal = function () {
-  this.players[0].cards.push(this.deck[0]);
-  this.players[1].cards.push(this.deck[1]);
-  this.players[0].cards.push(this.deck[2]);
-  this.players[1].cards.push(this.deck[3]);
-  this.players[0].cards.push(this.deck[4]);
-  this.players[1].cards.push(this.deck[5]);
-};
+Game.prototype.deal = function (){
+  for(let i = 0; i <this.deck.length; i++){
+    if (i % 2 !== 0){
+    this.players[0].cards.push(this.deck[i]);
+   }
+  else{
+    this.players[1].cards.push(this.deck[i]);
+   }
+  }
+}
 
 Game.prototype.decideWinner = function (player) {
 this.activeHands.push(chosenCard)

@@ -27,12 +27,12 @@ describe('game', function (){
     game = new Game([player1, player2], [card1, card2, card3, card4, card5, card6]);
   });
 
-  it('should have 2 players', function(){
+  xit('should have 2 players', function(){
     const result = game.players.length;
     assert.strictEqual(result, 2);
   });
 
-  it('should have 6 cards', function(){
+  xit('should have 6 cards', function(){
     const result = game.deck.length;
     assert.strictEqual(result, 6);
   });
@@ -43,7 +43,7 @@ describe('game', function (){
     assert.strictEqual(result, 3);
   });
 
-   it("can play a game", function(){
+   xit("can play a game", function(){
     game.playGame(player1, "strength", player2);
     // const result = player1.cards.length;
     const result = "Player one wins this round";
