@@ -6,6 +6,9 @@ const Game = function (players, deck){
 }
 
 Game.prototype.deal = function (){
+  if (this.deck.length %2 !==0){
+    this.deck.pop();
+  }
   for(let i = 0; i <this.deck.length; i++){
     if (i % 2 !== 0){
     this.players[0].cards.push(this.deck[i]);
@@ -28,18 +31,21 @@ Game.prototype.getAttributeValue = function (attribute, index) {
   return this.activeHands[index][attribute]
 };
 
+Game.prototype.createActiveHands = function(player1, player2){
+   this.selectCard(player1);
+   this.selectCard(player2);
+}
 
-Game.prototype.playGame = function (player1, p1Choice, player2){
+Game.prototype.playGame = function (player1, pChoice, player2){
   // 3 cards dealt to each
   this.deal();
   // Pop 1 card into activehands array for each player
-  this.selectCard(player1);
-  this.selectCard(player2);
+  this.createActiveHands(player1,player2);
 
-  if (this.getAttributeValue(p1Choice, 0) > this.getAttributeValue(p1Choice, 1)) {console.log("Player one wins this round");
+  if (this.getAttributeValue(pChoice, 0) > this.getAttributeValue(pChoice, 1)) {console.log("Player one wins this round");
   player1.cards.push(this.activeHands.pop());
   player1.cards.push(this.activeHands.pop());
-}  else if (this.getAttributeValue(p1Choice, 0) < this.getAttributeValue(p1Choice, 1))
+}  else if (this.getAttributeValue(pChoice, 0) < this.getAttributeValue(pChoice, 1))
       { console.log("Player two wins");
       player2.cards.push(this.activeHands.pop());
       player2.cards.push(this.activeHands.pop());
@@ -49,8 +55,9 @@ Game.prototype.playGame = function (player1, p1Choice, player2){
       player1.cards.push(this.activeHands.pop());
 
     }
-
   }
+
+  // Game.prototype.
 
   // Game.prototype.playerWins = function(){
   //

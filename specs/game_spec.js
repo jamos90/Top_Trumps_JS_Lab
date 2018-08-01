@@ -23,8 +23,7 @@ describe('game', function (){
     card3 = new Card('black widow', 8, 6, 9);
     card4 = new Card('The Flash',  7, 4, 10);
     card5 = new Card('Wonder Woman',8, 7, 5);
-    card6 = new Card('Batman',  10,  5, 6);
-    game = new Game([player1, player2], [card1, card2, card3, card4, card5, card6]);
+    game = new Game([player1, player2], [card1, card2, card3, card4, card5]);
   });
 
   xit('should have 2 players', function(){
@@ -32,22 +31,39 @@ describe('game', function (){
     assert.strictEqual(result, 2);
   });
 
-  xit('should have 6 cards', function(){
+  it('should have 6 cards', function(){
     const result = game.deck.length;
-    assert.strictEqual(result, 6);
+    assert.strictEqual(result, 5);
   });
 
   it('should deal cards to both players', function(){
     game.deal();
     const result = game.players[0].cards.length;
-    assert.strictEqual(result, 3);
+    assert.strictEqual(result, 2);
   });
 
-   xit("can play a game", function(){
+   it("can play a game", function(){
     game.playGame(player1, "strength", player2);
     // const result = player1.cards.length;
     const result = "Player one wins this round";
     assert.strictEqual(result, "Player one wins this round");
    });
+
+   it("can have an active hand", function(){
+     game.createActiveHands(player1, player2);
+     const result = game.activeHands.length;
+     assert.deepStrictEqual(result, 2);
+
+   })
+
+   // it("         can play a game and player 2 loses", function(){
+   //  game.playGame(player1, "strength", player2);
+   //  const result = player2.cards.length;
+   //  // const result = "Player one wins this round";
+   //  assert.strictEqual(result,0);
+   // });
+
+
+
 
  });
